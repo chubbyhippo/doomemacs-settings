@@ -1,7 +1,7 @@
 * doomemacs-settings
+#+RAW_DOOMEMACS_SETTINGS_URL: https://raw.githubusercontent.com/chubbyhippo/doomemacs-settings/refs/heads/main
 ** setup
 
 #+begin_src shell
-RAW_DOOMEMACS_SETTINGS_URL="https://raw.githubusercontent.com/chubbyhippo/doomemacs-settings/refs/heads/main"
-curl -sS "${RAW_DOOMEMACS_SETTINGS_URL}/setup.sh" | /usr/bin/env sh
+curl -sS $RAW_DOOMEMACS_SETTINGS_URL/setup.sh | /usr/bin/env sh
 #+end_src
