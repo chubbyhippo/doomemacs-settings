@@ -103,18 +103,11 @@
   (define-key evil-motion-state-map (kbd "C-d") 'my-c-d-and-zz))
 
 ;; Rebind `n` and `N` to center after jumping to search matches
-(with-eval-after-load 'evil
-  ;; Rebind `n` to jump to the next search match and center the screen
-  (define-key evil-normal-state-map (kbd "n")
-    (lambda ()
-      (interactive)
-      (evil-search-next)
-      (evil-scroll-line-to-center (line-number-at-pos))))
-
-  ;; Rebind `N` to jump to the previous search match and center the screen
-  (define-key evil-normal-state-map (kbd "N")
-    (lambda ()
-      (interactive)
-      (evil-search-previous)
-      (evil-scroll-line-to-center (line-number-at-pos)))))
-
+(after! evil
+  (evil-define-key 'normal 'global "n" 'evil-ex-search-next)
+  (evil-define-key 'normal 'global "N" 'evil-ex-search-previous)
+  (defadvice! +evil-search-center-advice-a (orig-fn &rest args)
+    :around '(evil-ex-search-next evil-ex-search-previous)
+    (apply orig-fn args)
+    (evil-scroll-line-to-center (line-number-at-pos))
+    (when (evil-visual-state-p) (evil-visual-restore))))
