@@ -93,7 +93,7 @@
   (evil-scroll-down nil)
   (evil-scroll-line-to-center (line-number-at-pos)))
 
-(with-eval-after-load 'evil
+(after! evil
   ;; Replace C-u behavior
   (define-key evil-normal-state-map (kbd "C-u") 'my-c-u-and-zz)
   (define-key evil-motion-state-map (kbd "C-u") 'my-c-u-and-zz)
