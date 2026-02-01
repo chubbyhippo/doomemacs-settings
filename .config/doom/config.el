@@ -100,10 +100,8 @@
 
   ;; Replace C-d behavior
   (define-key evil-normal-state-map (kbd "C-d") 'my-c-d-and-zz)
-  (define-key evil-motion-state-map (kbd "C-d") 'my-c-d-and-zz))
+  (define-key evil-motion-state-map (kbd "C-d") 'my-c-d-and-zz)
 
-;; Rebind `n` and `N` to center after jumping to search matches
-(after! evil
   (evil-define-key 'normal 'global "n" 'evil-ex-search-next)
   (evil-define-key 'normal 'global "N" 'evil-ex-search-previous)
   (defadvice! +evil-search-center-advice-a (orig-fn &rest args)
